@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DomainLayer
+namespace DomainLayer.Models
 {
-    public class OrderRes
+    public class OrderAddModel
     {
+
         public int Id { get; set; }
         public string ShippingAddress { get; set; }
         public DateTime OrderDate { get; set; }
@@ -19,6 +20,6 @@ namespace DomainLayer
         public bool PaymentDone { get; set; }
         public int CustomerId { get; set; }
 
-        public List<Product> Products { get; set; }=new List<Product>();
+        public List<int> ProductIDs { get; set; }
     }
 }

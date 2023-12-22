@@ -1,4 +1,4 @@
-﻿using DomainLayer;
+﻿using DomainLayer.Enities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;

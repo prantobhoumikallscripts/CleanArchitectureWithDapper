@@ -54,7 +54,7 @@ namespace PresentationLayer.Controllers
         /// <returns></returns>
         
         [HttpPut("{id}")]
-        public async Task<ActionResult<ProductDto>> UpdateProductbyId(int id, [FromBody] ProductDto productDto)
+        public async Task<ActionResult<ProductDto>> UpdateProductbyId(int id, [FromBody] ProductAddModel productDto)
         {
             if (id == 0 || productDto is null)
             {
@@ -95,7 +95,7 @@ namespace PresentationLayer.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<ProductDto>> CreateProduct(ProductDto product)
+        public async Task<ActionResult<ProductDto>> CreateProduct(ProductAddModel product)
         {
             if (product == null)
             {

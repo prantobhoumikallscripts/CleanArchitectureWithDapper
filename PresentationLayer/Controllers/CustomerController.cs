@@ -1,5 +1,6 @@
-﻿using ApplicationLayer.IServices;
-using DomainLayer;
+﻿using ApplicationLayer.DTO;
+using ApplicationLayer.IServices;
+using DomainLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PresentationLayer.Controllers
@@ -24,7 +25,7 @@ namespace PresentationLayer.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        public async Task<ActionResult<List<Customer>>> GetAllCustomer()
+        public async Task<ActionResult<List<AllCustomerResModel>>> GetAllCustomer()
         {
 
             var res = _customerServices.GetCustomer();
@@ -37,7 +38,7 @@ namespace PresentationLayer.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Customer>> GetCustomerbyId(int id)
+        public async Task<ActionResult<SingleCustomerResModel>> GetCustomerbyId(int id)
         {
             var customer = _customerServices.CustomerById(id);
             return customer == null ? NotFound("Id Not Found") : Ok(customer);
@@ -45,7 +46,7 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Customer>> CreateCustomer(CustomerAddModel customer)
+        public async Task<ActionResult<CustomerAddModel>> CreateCustomer(CustomerReqModel customer)
         {
             var res = _customerServices.AddCustomer(customer);
             return res == null ? NotFound("Id Not Found") : Ok(res);

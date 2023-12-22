@@ -23,19 +23,20 @@ namespace ApplicationLayer.DTO
 
     public class ProductDto
     {
-        [Required]
+     
         public int Id { get; set; }
 
 
-        [Required]
-        [MaxLength(50)]
+      
         public string ProductName { get; set; }
 
-        [Required]
+ 
         public int Price { get; set; }
 
 
         public string? Description { get; set; }
+
+        public DateTime  ReleaseDate { get; set; }
 
       
     }

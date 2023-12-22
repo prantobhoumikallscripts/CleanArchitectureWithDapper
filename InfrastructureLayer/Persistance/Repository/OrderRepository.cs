@@ -1,6 +1,7 @@
 ﻿using Dapper;
-using DomainLayer;
+using DomainLayer.Enities;
 using DomainLayer.Interface;
+using DomainLayer.Models;
 using InfrastructureLayer.Context;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;

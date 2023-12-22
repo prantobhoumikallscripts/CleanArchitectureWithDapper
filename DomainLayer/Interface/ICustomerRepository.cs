@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DomainLayer.Models;
 
 namespace DomainLayer.Interface
 {
     public interface ICustomerRepository
     {
-        Customer GetCustomerWithDetails(int id);
+        CustomerDetailsResModel GetCustomerWithDetails(int id);
 
-        IEnumerable<Customer> GetCustomers();
+        IEnumerable<AllCustomerResponseModel> GetCustomers();
 
         CustomerAddModel AddCustomer(CustomerAddModel customer);
 
