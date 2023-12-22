@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Enities;
+using DomainLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,9 @@ namespace ApplicationLayer.DTO
 
         public string Gender { get; set; }
 
-        public Account AccountDetails { get; set; }
+        public AccountResModel AccountDetails { get; set; }
 
-        public List<Order> Orders { get; set; } = new List<Order>();
+        public List<OrderOfCustomerRes> Orders { get; set; } = new List<OrderOfCustomerRes>();
 
     }
 }

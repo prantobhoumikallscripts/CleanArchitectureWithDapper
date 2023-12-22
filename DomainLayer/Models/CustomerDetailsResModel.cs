@@ -16,7 +16,6 @@ namespace DomainLayer.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
 
-        public int RegionId { get; set; }
 
         public string Address { get; set; }
 
@@ -26,7 +25,7 @@ namespace DomainLayer.Models
 
         public Account AccountDetails { get; set; }
 
-        public List<Order> Orders { get; set; } = new List<Order>();
+        public List<OrderOfCustomerRes> Orders { get; set; } = new List<OrderOfCustomerRes>();
 
     }
 }

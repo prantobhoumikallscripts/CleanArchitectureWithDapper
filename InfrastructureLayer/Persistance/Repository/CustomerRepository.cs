@@ -116,7 +116,7 @@ namespace InfrastructureLayer.Persistance.Repository
 
             var customerDictionary = new Dictionary<int, CustomerDetailsResModel>();
             // Query with multi-mapping
-            var result = _connection.Query<CustomerDetailsResModel, Account, Order, CustomerDetailsResModel>(
+            var result = _connection.Query<CustomerDetailsResModel, Account, OrderOfCustomerRes, CustomerDetailsResModel>(
                     sql: "[dbo].[spGetCustomerDetailsById]",
                     map: (customer, account, order) =>
                     {
@@ -124,7 +124,7 @@ namespace InfrastructureLayer.Persistance.Repository
                         {
                             existingCustomer = customer;
                             existingCustomer.AccountDetails = account;
-                            existingCustomer.Orders = new List<Order>();
+                            existingCustomer.Orders = new List<OrderOfCustomerRes>();
                             customerDictionary.Add(existingCustomer.Id, existingCustomer);
                         }
 
