@@ -38,7 +38,7 @@ namespace PresentationLayer.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<CustomerDetailsResModel>> GetCustomerbyId(int id)
+        public async Task<ActionResult<SingleCustomerResModel>> GetCustomerbyId(int id)
         {
             var customer = _customerServices.CustomerById(id);
             return customer == null ? NotFound("Id Not Found") : Ok(customer);

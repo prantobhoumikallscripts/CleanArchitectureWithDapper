@@ -16,21 +16,24 @@ namespace ApplicationLayer.AutoMapper
         public MapperProfile()
         {
             CreateMap<Product, ProductDto>().ReverseMap();
-            // CreateMap<CustomerAddModel, CustomerDetailsResModel>();
-            //CreateMap<AllCustomerResponseModel, AllCustomerResModel>()
-            //      .ForAllMembers();
-            //CreateMap<CustomerDetailsResModel, SingleCustomerResModel>()
+            CreateMap<AllCustomerResponseModel, AllCustomerResModel>()
+                 .ForMember(dest => dest.Continant, opt => opt.MapFrom(src => src.RegionDetails.Continents))
+                 .ForMember(dest => dest.RegionName, opt => opt.MapFrom(src => src.RegionDetails.RegionName));
+               
+              // Map other properties of RegionDetails as needed
+             //   .ForMember(dest => dest.RegionDetails, opt => opt.Ignore()); // Ignore the original RegionDetails property;
+
+
+            CreateMap<CustomerDetailsResModel, SingleCustomerResModel>();
             //      .ForAllMembers();
 
-            CreateMap<CustomerDetailsResModel, AllCustomerResModel>();
+            // CreateMap<CustomerDetailsResModel, AllCustomerResModel>();
 
 
             CreateMap<OrderReqModel, OrderAddModel>();
             CreateMap<AccountReqModel, Account>();
             CreateMap<CustomerReqModel, CustomerAddModel>();
             CreateMap<ProductAddModel, Product>();
-
-            // Use CreateMap... Etc.. here (Profile methods are the same as configuration methods)
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DomainLayer.Interface
     {
         CustomerDetailsResModel GetCustomerWithDetails(int id);
 
-        IEnumerable<CustomerDetailsResModel> GetCustomers();
+        IEnumerable<AllCustomerResponseModel> GetCustomers();
 
         CustomerAddModel AddCustomer(CustomerAddModel customer);
 

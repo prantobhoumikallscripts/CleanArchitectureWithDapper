@@ -13,6 +13,6 @@ namespace DomainLayer.Enities
         public int Id { get; set; }
         public string RegionName { get; set; }
         public int RegionCode { get; set; }
-        public string Continant { get; set; }
+        public string Continents { get; set; }
     }
 }

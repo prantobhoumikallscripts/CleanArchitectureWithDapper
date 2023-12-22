@@ -139,7 +139,7 @@ namespace InfrastructureLayer.Persistance.Repository
            
         }
 
-        public IEnumerable<CustomerDetailsResModel> GetCustomers()
+        public IEnumerable<AllCustomerResponseModel> GetCustomers()
         {
             // string query = "SELECT * FROM Customers";
             //using (var connection = _context.CreateConnection())
@@ -150,9 +150,14 @@ namespace InfrastructureLayer.Persistance.Repository
 
 
             //return _connection.Query<Customer>(query).ToList();
-
-             var res= _connection.Query<CustomerDetailsResModel>("spGetAllCustomer", commandType: CommandType.StoredProcedure);
-            return res;
+            var res= _connection.Query<AllCustomerResponseModel,Region,AllCustomerResponseModel>("spGetAllCustomer",
+                 (customer,region) =>
+                 {
+                     customer.RegionDetails = region;
+                     return customer;
+                 }
+                 , commandType: CommandType.StoredProcedure);
+            return res.ToList();
 
         }
 

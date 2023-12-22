@@ -22,6 +22,7 @@ namespace ApplicationLayer.DTO
 
         public string Gender { get; set; }
 
-        public Region RegionDetails { get; set; }
+        public string RegionName { get; set; }
+        public string Continant { get; set; }
     }
 }
