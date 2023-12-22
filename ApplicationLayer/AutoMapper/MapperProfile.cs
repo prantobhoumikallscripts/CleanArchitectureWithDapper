@@ -1,6 +1,8 @@
 ﻿using ApplicationLayer.DTO;
 using AutoMapper;
 using DomainLayer;
+using DomainLayer.Enities;
+using DomainLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +16,20 @@ namespace ApplicationLayer.AutoMapper
         public MapperProfile()
         {
             CreateMap<Product, ProductDto>().ReverseMap();
-            CreateMap<Customer, CustomerAddModel>().ReverseMap();
+            // CreateMap<CustomerAddModel, CustomerDetailsResModel>();
+            //CreateMap<AllCustomerResponseModel, AllCustomerResModel>()
+            //      .ForAllMembers();
+            //CreateMap<CustomerDetailsResModel, SingleCustomerResModel>()
+            //      .ForAllMembers();
+
+            CreateMap<CustomerDetailsResModel, AllCustomerResModel>();
+
+
+            CreateMap<OrderReqModel, OrderAddModel>();
+            CreateMap<AccountReqModel, Account>();
+            CreateMap<CustomerReqModel, CustomerAddModel>();
+            CreateMap<ProductAddModel, Product>();
+
             // Use CreateMap... Etc.. here (Profile methods are the same as configuration methods)
         }
     }

@@ -1,5 +1,4 @@
-﻿
-using DomainLayer;
+﻿using DomainLayer.Enities;
 using DomainLayer.Interface.Repository;
 using InfrastructureLayer.Context;
 using System;

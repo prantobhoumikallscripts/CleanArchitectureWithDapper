@@ -1,6 +1,8 @@
 ﻿
+using ApplicationLayer.DTO;
 using ApplicationLayer.IServices;
-using DomainLayer;
+using DomainLayer.Enities;
+using DomainLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -55,12 +57,12 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<OrderRes>> CreateOrder( int customerid,[FromBody] OrderAddModel order)
+        public async Task<ActionResult<OrderRes>> CreateOrder( int customerid,[FromBody] OrderReqModel order)
         {
             try
             {
-                order.CustomerId = customerid;
-                var res = await _orderService.AddOrderAsync(order);
+               // order.CustomerId = customerid;
+                 var res = await _orderService.AddOrderAsync(customerid,order);
                 return res == null ? NotFound("Id Not Found") : Created("GetOrderById", res);
 
             }catch (Exception ex)

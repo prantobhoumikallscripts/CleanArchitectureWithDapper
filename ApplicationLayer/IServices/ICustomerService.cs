@@ -1,5 +1,5 @@
 ﻿using ApplicationLayer.DTO;
-using DomainLayer;
+using DomainLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +11,9 @@ namespace ApplicationLayer.IServices
     public interface ICustomerService
     {
 
-        List<Customer> GetCustomer();
-        Customer CustomerById(int id);
-        CustomerAddModel AddCustomer(CustomerAddModel customer);
+        List<AllCustomerResModel> GetCustomer();
+        CustomerDetailsResModel CustomerById(int id);
+        CustomerAddModel AddCustomer(CustomerReqModel customer);
 
         int DeleteCustomer(int id);
     }

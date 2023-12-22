@@ -1,8 +1,8 @@
 ﻿using ApplicationLayer.DTO;
 using ApplicationLayer.IServices;
 using AutoMapper;
-using DomainLayer;
 using DomainLayer.Interface;
+using DomainLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +21,16 @@ namespace ApplicationLayer.Services
             _cusRepository = cusRepository;
             _mapper = mapper;
         }
-        public CustomerAddModel? AddCustomer(CustomerAddModel customer)
+        public CustomerAddModel? AddCustomer(CustomerReqModel customer)
         {
+
+           var customerToAdd= _mapper.Map<CustomerAddModel>(customer);
             
-            return _cusRepository.AddCustomer(customer); 
+            return _cusRepository.AddCustomer(customerToAdd); 
            
         }
 
-        public Customer CustomerById(int cusid)
+        public CustomerDetailsResModel CustomerById(int cusid)
         {
             var customer = _cusRepository.GetCustomerWithDetails(cusid);
             return customer;
@@ -39,12 +41,12 @@ namespace ApplicationLayer.Services
             return (_cusRepository.DeleteCustomer(id));
         }
 
-        public List<Customer> GetCustomer()
+        public List<AllCustomerResModel> GetCustomer()
         {
             var cus = _cusRepository.GetCustomers();
 
-           // var productDtos = _mapper.Map<List<ProductDto>>(products);
-           return cus.ToList();
+           var res = _mapper.Map<List<AllCustomerResModel>>(cus);
+           return res;
         }
 
      

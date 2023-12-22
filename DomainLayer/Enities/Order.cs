@@ -1,15 +1,14 @@
-﻿using DomainLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DomainLayer
+namespace DomainLayer.Enities
 {
-    public class OrderAddModel
+    public class Order
     {
-
         public int Id { get; set; }
         public string ShippingAddress { get; set; }
         public DateTime OrderDate { get; set; }
@@ -20,7 +19,5 @@ namespace DomainLayer
 
         public bool PaymentDone { get; set; }
         public int CustomerId { get; set; }
-
-        public List<int>ProductIDs { get; set; }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using ApplicationLayer.DTO;
 using ApplicationLayer.IServices;
-using DomainLayer;
+using AutoMapper;
+using DomainLayer.Enities;
 using DomainLayer.Interface;
+using DomainLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,21 +16,29 @@ namespace ApplicationLayer.Services
     {   
         private readonly IOrderRepository _orderRepo;
         private readonly ICustomerRepository _cusRepo;
-        public OrderService(ICustomerRepository customerRepository,IOrderRepository orderRepository) {
+        private readonly IMapper _mapper;
+        public OrderService(ICustomerRepository customerRepository,IOrderRepository orderRepository,IMapper mapper) {
             _cusRepo = customerRepository;
             _orderRepo = orderRepository;
+            _mapper = mapper;
         }
 
-        public Task<OrderRes> AddOrderAsync(OrderAddModel order)
+        public Task<OrderRes> AddOrderAsync(int cusId, OrderReqModel order)
         {
-            var cus = _cusRepo.GetCustomerWithDetails(order.CustomerId);
+            var cus = _cusRepo.GetCustomerWithDetails(cusId);
+
             if (cus == null)
             {
                 throw new ArgumentException("customer not found");
 
             }
-             var res  =  _orderRepo.BulkOrderInsert();
-            return _orderRepo.AddOrdersAsync(order);
+            var orderToadd=_mapper.Map<OrderAddModel>(order);
+            orderToadd.CustomerId= cusId;
+            orderToadd.OrderDate=DateTime.Now;
+            orderToadd.DelivaryStatus = "Pending";
+           //  var res  =  _orderRepo.BulkOrderInsert();
+            return _orderRepo.AddOrdersAsync(orderToadd);
+
         }
 
         public int DeleteOrderById(int customerId,int id)

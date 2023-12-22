@@ -1,6 +1,7 @@
 ﻿using Dapper;
-using DomainLayer;
+using DomainLayer.Enities;
 using DomainLayer.Interface;
+using DomainLayer.Models;
 using InfrastructureLayer.Context;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -52,7 +53,7 @@ namespace InfrastructureLayer.Persistance.Repository
                     p.Add("BankName", customer.AccountDetails?.BankName, DbType.String);
                     p.Add("BranchName", customer.AccountDetails?.BranchName, DbType.String);
                     p.Add("Balance", customer.AccountDetails?.Balance, DbType.Int32);
-                    p.Add("CustomerId", customer.AccountDetails?.CustomerId, DbType.Int32);
+                    p.Add("CustomerId", customerId, DbType.Int32);
                     _connection.Query("spInsertAccount", p,commandType:CommandType.StoredProcedure);
 
                     int accNo = p.Get<int>("id");
@@ -74,7 +75,7 @@ namespace InfrastructureLayer.Persistance.Repository
             
         }
 
-        public Customer GetCustomerWithDetails(int id)
+        public CustomerDetailsResModel GetCustomerWithDetails(int id)
         {
             //string query = "SELECT * FROM Customers WHERE Id = @id";
             //using (var connection = _context.CreateConnection())
@@ -113,9 +114,9 @@ namespace InfrastructureLayer.Persistance.Repository
 
 
 
-            var customerDictionary = new Dictionary<int, Customer>();
+            var customerDictionary = new Dictionary<int, CustomerDetailsResModel>();
             // Query with multi-mapping
-            var result = _connection.Query<Customer, Account, Order, Customer>(
+            var result = _connection.Query<CustomerDetailsResModel, Account, Order, CustomerDetailsResModel>(
                     sql: "[dbo].[spGetCustomerDetailsById]",
                     map: (customer, account, order) =>
                     {
@@ -138,7 +139,7 @@ namespace InfrastructureLayer.Persistance.Repository
            
         }
 
-        public IEnumerable<Customer> GetCustomers()
+        public IEnumerable<CustomerDetailsResModel> GetCustomers()
         {
             // string query = "SELECT * FROM Customers";
             //using (var connection = _context.CreateConnection())
@@ -150,7 +151,7 @@ namespace InfrastructureLayer.Persistance.Repository
 
             //return _connection.Query<Customer>(query).ToList();
 
-             var res= _connection.Query<Customer>("spGetAllCustomer", commandType: CommandType.StoredProcedure);
+             var res= _connection.Query<CustomerDetailsResModel>("spGetAllCustomer", commandType: CommandType.StoredProcedure);
             return res;
 
         }

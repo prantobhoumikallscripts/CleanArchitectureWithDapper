@@ -4,7 +4,7 @@ using ApplicationLayer.DTO;
 using ApplicationLayer.IServices;
 using ApplicationLayer.Services;
 using AutoMapper;
-using DomainLayer;
+using DomainLayer.Enities;
 using DomainLayer.Interface.Repository;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace ApplicationLayer.Services
             _productRepository = productRepository ?? throw new ArgumentNullException(nameof(_productRepository));
 
         }
-        public ProductDto AddProduct(ProductDto productDto)
+        public ProductDto AddProduct(ProductAddModel productDto)
         {   
             var product1= _mapper.Map<Product>(productDto);
 
@@ -39,7 +39,9 @@ namespace ApplicationLayer.Services
             //};
 
             var res = _productRepository.AddProduct(product1);
-            return productDto;
+
+            return _mapper.Map<ProductDto>(res);
+            
         }
 
         public int DeleteProductById(int id)
@@ -92,7 +94,7 @@ namespace ApplicationLayer.Services
             return productDto;
         }
 
-        public ProductDto UpdateProduct(int id, ProductDto productDto)
+        public ProductDto UpdateProduct(int id, ProductAddModel productDto)
         {
            
             var productToUpdate = _mapper.Map<Product>(productDto);
