@@ -1,12 +1,4 @@
-USE [DB]
-GO
-
-/****** Object: SqlProcedure [dbo].[spBulkInsertOrder] Script Date: 21-12-2023 18:40:28 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
+﻿
 
 CREATE PROCEDURE spBulkInsertOrder
     @Orders dbo.OrderAddModelTableType READONLY

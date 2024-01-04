@@ -1,4 +1,5 @@
-﻿CREATE Procedure [dbo].[spInsertCustomer]
+﻿CREATE PROCEDURE [dbo].[spInsertCustomer]
+
 (@id int output,
  @FullName   varchar(50),
  @PhoneNumber nvarchar(50),

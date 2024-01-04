@@ -1,14 +1,4 @@
-USE [DB]
-GO
-
-/****** Object: SqlProcedure [dbo].[spInsertAccount] Script Date: 21-12-2023 18:45:00 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-Create Procedure spInsertAccount
+﻿Create Procedure spInsertAccount
 (@id int output,
  @BranchName nvarchar(50),
  @BankName nvarchar(50),
