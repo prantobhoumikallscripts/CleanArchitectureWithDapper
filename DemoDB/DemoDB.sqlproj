@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{58358670-fd45-44cf-ae50-9c5fb1c902a3}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -58,6 +58,7 @@
     <Folder Include="Properties" />
     <Folder Include="StoreProc" />
     <Folder Include="TableValueParameter" />
+    <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="StoreProc\spBulkInsertOrder.sql" />
@@ -73,5 +74,15 @@
     <Build Include="StoreProc\spGetOrderById.sql" />
     <Build Include="StoreProc\spGetOrderDetailsById.sql" />
     <Build Include="StoreProc\spDeleteOrderById.sql" />
+    <Build Include="Tables\Regions.sql" />
+    <Build Include="Tables\Products.sql" />
+    <Build Include="Tables\Customers.sql" />
+    <Build Include="Tables\Accounts.sql" />
+    <Build Include="Tables\Orders.sql" />
+    <Build Include="Tables\OrderedProduct.sql" />
+    <Build Include="StoreProc\spInsertOrder.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DemoDB.publish.xml" />
   </ItemGroup>
 </Project>

@@ -20,6 +20,6 @@ namespace InfrastructureLayer.Context
             _connection = _configuration.GetConnectionString("DefaultConnection");
         }
         //public IDbConnection CreateConnection() => new SqlConnection(_connection);
-        public IDbConnection CreateConnection()=>new SqlConnection("Server=.;Database=DB;Trusted_Connection=True;TrustServerCertificate=true");
+        public IDbConnection CreateConnection()=>new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=DemoDB;Trusted_Connection=True;TrustServerCertificate=true");
     }
 }

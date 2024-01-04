@@ -30,10 +30,10 @@ namespace ApplicationLayer.Services
            
         }
 
-        public CustomerDetailsResModel CustomerById(int cusid)
+        public SingleCustomerResModel CustomerById(int cusid)
         {
             var customer = _cusRepository.GetCustomerWithDetails(cusid);
-            return customer;
+            return _mapper.Map<SingleCustomerResModel>(customer);
         }
 
         public int DeleteCustomer(int id)
