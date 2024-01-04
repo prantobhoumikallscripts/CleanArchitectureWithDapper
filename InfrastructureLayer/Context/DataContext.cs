@@ -22,7 +22,7 @@ namespace InfrastructureLayer.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
            // optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"));
-            optionsBuilder.UseSqlServer("Server=.;Database=DemoDb;Trusted_Connection=True;TrustServerCertificate=true");
+            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=True;Persist Security Info=False;Pooling=False;Multiple Active Result Sets=False;Encrypt=True;Trust Server Certificate=True;Command Timeout=0");
         }
     }
 }

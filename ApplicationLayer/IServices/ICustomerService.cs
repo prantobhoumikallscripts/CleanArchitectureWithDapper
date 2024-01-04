@@ -12,7 +12,7 @@ namespace ApplicationLayer.IServices
     {
 
         List<AllCustomerResModel> GetCustomer();
-        CustomerDetailsResModel CustomerById(int id);
+        SingleCustomerResModel CustomerById(int id);
         CustomerAddModel AddCustomer(CustomerReqModel customer);
 
         int DeleteCustomer(int id);
